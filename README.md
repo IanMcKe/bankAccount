@@ -6,7 +6,7 @@
 
 ## Description
 
-Input fields include ```userName```, ```balance```, ```deposit```, and ```withdraw```.
+Input fields include ```userName```, ```balance```, ```deposit```, and ```withdraw```. Constructor: ```BankAccount```. Prototypes: ```BankAccount.prototype.deposit``` and ```BankAccount.prototype.withdraw```.
 
 ## Setup
 
