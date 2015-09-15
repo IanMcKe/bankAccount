@@ -24,43 +24,41 @@ function resetFields() {
 }
 
 $(document).ready(function() {
-        $("form#new-bank-account").submit(function(event) {
-            event.preventDefault();
+    var newBankAccount;
+    $("form#new-bank-account").submit(function(event) {
+        event.preventDefault();
 
-            var inputtedAccountName = $("input#new-account-name").val();
-            var inputtedBalance = parseInt($("input#new-balance").val());
+        var inputtedAccountName = $("input#new-account-name").val();
+        var inputtedBalance = parseInt($("input#new-balance").val());
 
-            var newBankAccount = new BankAccount(inputtedAccountName, inputtedBalance);
+        newBankAccount = new BankAccount(inputtedAccountName, inputtedBalance);
 
-            $("#show-account").fadeOut();
-            $("#show-account").fadeIn(1000);
-            $(".account-name").text(newBankAccount.userName);
-            $(".balance").text(newBankAccount.balance);
+        $("#show-account").fadeOut();
+        $("#show-account").fadeIn(1000);
+        $(".account-name").text(newBankAccount.userName);
+        $(".balance").text(newBankAccount.balance);
 
-            $("ul#addresses").text("");
+        $("ul#addresses").text("");
 
-            $("form#deposit-withdraw").submit(function(event) {
-                event.preventDefault();
+        resetFields();
+    });
 
-                var inputtedDeposit = parseInt($("input#new-deposit").val());
-                var inputtedWithdraw = parseInt($("input#new-withdraw").val());
+    $("form#deposit-withdraw").submit(function(event) {
+        event.preventDefault();
 
-                newBankAccount.deposit(inputtedDeposit);
-                newBankAccount.withdraw(inputtedWithdraw);
+        var inputtedDeposit = parseInt($("input#new-deposit").val());
+        var inputtedWithdraw = parseInt($("input#new-withdraw").val());
 
-                $("#show-account").fadeOut();
-                $("#show-account").fadeIn(1000);
-                $(".account-name").text(newBankAccount.userName);
-                $(".balance").text(newBankAccount.balance);
+        newBankAccount.deposit(inputtedDeposit);
+        newBankAccount.withdraw(inputtedWithdraw);
 
-                $("ul#addresses").text("");
+        $("#show-account").fadeOut();
+        $("#show-account").fadeIn(1000);
+        $(".account-name").text(newBankAccount.userName);
+        $(".balance").text(newBankAccount.balance);
 
-                resetFields();
+        $("ul#addresses").text("");
 
-            });
-
-            resetFields();
-
-        });
-
+        resetFields();
+    });
 });
